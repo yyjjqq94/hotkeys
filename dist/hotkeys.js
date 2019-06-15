@@ -1,5 +1,5 @@
 /*!
- * hotkeys-js v3.6.8
+ * hotkeys-js v3.6.11
  * A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies.
  * 
  * Copyright (c) 2019 kenny wong <wowohoo@qq.com>
@@ -118,8 +118,6 @@
     cmd: isff ? 224 : 91,
     command: isff ? 224 : 91
   };
-  var _downKeys = []; // 记录摁下的绑定键
-
   var modifierMap = {
     16: 'shiftKey',
     18: 'altKey',
@@ -139,6 +137,8 @@
 
   modifierMap[isff ? 224 : 91] = 'metaKey';
   _mods[isff ? 224 : 91] = false;
+
+  var _downKeys = []; // 记录摁下的绑定键
 
   var _scope = 'all'; // 默认热键范围
 
@@ -253,7 +253,12 @@
       // 将组合快捷键拆分为数组
       keys = multipleKeys[i].split('+'); // 记录每个组合键中的修饰键的键码 返回数组
 
-      if (keys.length > 1) mods = getMods(_modifier, keys); // 获取除修饰键外的键值key
+      if (keys.length > 1) {
+        mods = getMods(_modifier, keys);
+      } else {
+        mods = [];
+      } // 获取除修饰键外的键值key
+
 
       key = keys[keys.length - 1];
       key = key === '*' ? '*' : code(key); // 判断是否传入范围，没有就获取范围
@@ -426,10 +431,13 @@
     } // 在全局document上设置快捷键
 
 
-    if (typeof element !== 'undefined' && !isElementBind(element)) {
+    if (typeof element !== 'undefined' && !isElementBind(element) && window) {
       elementHasBindEvent.push(element);
       addEvent(element, 'keydown', function (e) {
         dispatch(e);
+      });
+      addEvent(window, 'focus', function () {
+        _downKeys = [];
       });
       addEvent(element, 'keyup', function (e) {
         dispatch(e);
