@@ -2,7 +2,7 @@
 
 <!--dividing-->
 
-[![](https://img.shields.io/github/issues/jaywcjlove/hotkeys.svg)](https://github.com/jaywcjlove/hotkeys/issues) [![](https://img.shields.io/github/forks/jaywcjlove/hotkeys.svg)](https://github.com/jaywcjlove/hotkeys/network) [![](https://img.shields.io/github/stars/jaywcjlove/hotkeys.svg)](https://github.com/jaywcjlove/hotkeys/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/hotkeys.svg)](https://github.com/jaywcjlove/hotkeys/releases) ![](http://jaywcjlove.github.io/sb/status/no-dependencies.svg) [![Build Status](https://www.travis-ci.org/jaywcjlove/hotkeys.svg?branch=master)](https://www.travis-ci.org/jaywcjlove/hotkeys) [![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/hotkeys/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/hotkeys?branch=master) [![jaywcjlove/sb](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-zh.md)
+[![](https://img.shields.io/github/issues/jaywcjlove/hotkeys.svg)](https://github.com/jaywcjlove/hotkeys/issues) [![](https://img.shields.io/github/forks/jaywcjlove/hotkeys.svg)](https://github.com/jaywcjlove/hotkeys/network) [![](https://img.shields.io/github/stars/jaywcjlove/hotkeys.svg)](https://github.com/jaywcjlove/hotkeys/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/hotkeys.svg)](https://github.com/jaywcjlove/hotkeys/releases) ![](http://jaywcjlove.github.io/sb/status/no-dependencies.svg) [![Build Status](https://www.travis-ci.org/jaywcjlove/hotkeys.svg?branch=master)](https://www.travis-ci.org/jaywcjlove/hotkeys) [![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/hotkeys/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/hotkeys?branch=master) [![jaywcjlove/hotkeys](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-zh.md) [![jaywcjlove/hotkeys](https://jaywcjlove.github.io/sb/ico/gitee.svg)](https://gitee.com/jaywcjlove/hotkeys)
 
 HotKeys.js is an input capture library with some very special features, it is easy to pick up and use, has a reasonable footprint (~3kb) (gzipped: 1.73kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks. Official document [demo preview](http://jaywcjlove.github.io/hotkeys). [More examples](https://github.com/jaywcjlove/hotkeys/issues?q=label%3ADemo+).
 
@@ -57,37 +57,6 @@ $ npm install react-hot-keys --save
 ```
 
 Detailed use method please see its documentation [react-hotkeys](https://github.com/jaywcjlove/react-hotkeys).
-
-```jsx
-import React, { Component } from 'react';
-import Hotkeys from 'react-hot-keys';
-
-export default class HotkeysDemo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      output: 'Hello, I am a component that listens to keydown and keyup of a',
-    }
-  }
-  onKeyUp(keyNm, e, handle) {
-    this.setState({output: keyNm})
-  }
-  onKeyDown(keyName, e, handle) {
-    this.setState({output: keyNm})
-  }
-  render() {
-    return (
-      <Hotkeys 
-        keyName="shift+a,alt+s"
-        onKeyDown={this.onKeyDown.bind(this)}
-        onKeyUp={this.onKeyUp.bind(this)}
-      >
-        <div style={{ padding: 50 }}> {this.state.output} </div>
-      </Hotkeys>
-    )
-  }
-}
-```
 
 ## Browser Support
 
