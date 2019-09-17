@@ -38,17 +38,17 @@ Or manually download and link **hotkeys.js** in your HTML, It can also be downlo
 <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
 <script type="text/javascript">
 hotkeys('ctrl+a,ctrl+b,r,f', function (event, handler){
-	switch (handler.key) {
-		case 'ctrl+a': alert('you pressed ctrl+a!');
-			break;
-		case 'ctrl+b': alert('you pressed ctrl+b!');
-			break;
-		case 'r': alert('you pressed r!');
-			break;
-		case 'f': alert('you pressed f!');
-			break;
-		default: alert(event);
-	}
+  switch (handler.key) {
+    case 'ctrl+a': alert('you pressed ctrl+a!');
+      break;
+    case 'ctrl+b': alert('you pressed ctrl+b!');
+      break;
+    case 'r': alert('you pressed r!');
+      break;
+    case 'f': alert('you pressed f!');
+      break;
+    default: alert(event);
+  }
 });
 </script>
 ```
@@ -152,6 +152,7 @@ hotkeys('*','wcj', function(event){
 - `element<HTMLElement>`
 - `keyup<Boolean>`
 - `keydown<Boolean>`
+- `splitKey<string>` (default is `+`)
 
 ```js
 hotkeys('o, enter', {
@@ -160,6 +161,14 @@ hotkeys('o, enter', {
 }, function(){ 
   console.log('do something else');
 });
+
+hotkeys('ctrl-+', { splitKey: '-' }, function(e) {
+  console.log('you pressed ctrl and +');
+});
+
+hotkeys('+', { splitKey: '-' }, function(e){
+  console.log('you pressed +');
+})
 ```
 
 ## API REFERENCE
